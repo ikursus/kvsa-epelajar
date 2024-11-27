@@ -49,7 +49,7 @@ class PelajarController extends Controller
 
         // Bagi response data berjaya disimpan
         // Redirect client ke halaman senarai pelajar
-        return redirect('pelajar/senarai')->with('mesej-berjaya', 'Rekod berjaya disimpan');
+        return redirect('pelajar')->with('mesej-berjaya', 'Rekod berjaya disimpan');
     }
 
     /**
@@ -76,7 +76,23 @@ class PelajarController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $data = $request->validate([
+            'nama' => ['required'],
+            'email' => ['required', 'email:filter'],
+            'phone' => ['required'],
+            'alamat' => ['required'],
+            'no_kp' => ['required', 'digits:12'],
+            'no_pelajar' => ['required'],
+            'course' => ['required'],
+            'status' => ['required']
+        ]);
+
+        // Simpan data ke dalam table pelajar menggunakan Query Builder
+        DB::table('pelajar')->where('id', '=', $id)->update($data);
+
+        // Bagi response data berjaya disimpan
+        // Redirect client ke halaman senarai pelajar
+        return redirect('pelajar')->with('mesej-berjaya', 'Rekod berjaya dikemaskini');
     }
 
     /**
@@ -84,6 +100,11 @@ class PelajarController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        // Padam rekod pelajar berdasarkan ID pelajar
+        DB::table('pelajar')->where('id', '=', $id)->delete();
+
+        // Bagi response data berjaya dipadam
+        // Redirect client ke halaman senarai pelajar
+        return redirect('pelajar')->with('mesej-berjaya', 'Rekod berjaya dipadam');
     }
 }

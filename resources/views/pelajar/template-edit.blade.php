@@ -9,6 +9,10 @@
 
 <form method="POST" action="">
     @csrf
+    {{-- Letak kod pemberitahuan borang ini perlu menggunakan method jenis patch apabila dihantar ke laravel --}}
+    <input type="hidden" name="_method" value="PATCH">
+    @method('PATCH')
+
     <div class="card mb-4">
         <div class="card-header">
             <i class="fas fa-table me-1"></i>

@@ -45,7 +45,12 @@
                     <td>{{ $pelajar->course }}</td>
                     <td>
                         <a href="/pelajar/{{ $pelajar->id }}/edit" class="btn btn-primary">Kemaskini</a>
-                        <button href="#" class="btn btn-danger">Hapus</button>
+
+                        <form action="/pelajar/{{ $pelajar->id }}" method="POST" class="d-inline">
+                            @csrf
+                            @method('DELETE')
+                            <button href="#" class="btn btn-danger" onclick="return confirm('Adakah anda pasti untuk delete {{ $pelajar->nama }}?')">Hapus</button>
+                        </form>
                     </td>
                 </tr>
                 @endforeach
