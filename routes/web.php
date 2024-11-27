@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PelajarController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Auth\LoginController;
 
 // Halaman utama aplikasi
@@ -50,6 +51,10 @@ Route::group(['middleware' => 'auth'], function() {
     // Route pengurusan admin
     Route::resource('admin', UserController::class);
 
+    // Route pengurusan profile
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+
 
     // Halaman dashboard
     Route::get('/dashboard', function () {
@@ -77,7 +82,7 @@ Route::group(['middleware' => 'auth'], function() {
     });
 
     // Halaman logout
-    Route::get('/logout', fn() => 'Ini halaman logout');
+    Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 
 });

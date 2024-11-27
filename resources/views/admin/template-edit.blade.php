@@ -7,10 +7,9 @@
     <li class="breadcrumb-item active">Borang Kemaskini Admin</li>
 </ol>
 
-<form method="POST" action="">
+<form method="POST" action="{{ route('admin.update', $admin->id) }}">
     @csrf
     {{-- Letak kod pemberitahuan borang ini perlu menggunakan method jenis patch apabila dihantar ke laravel --}}
-    <input type="hidden" name="_method" value="PATCH">
     @method('PATCH')
 
     <div class="card mb-4">
@@ -40,6 +39,7 @@
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <input type="password" name="password" class="form-control" placeholder="Password">
+                    <span>Biarkan kosong jika tidak mahu tukar password</span>
                 </div>
                 <div class="col-md-6 mb-3">
                     <input type="password" name="password_confirmation" class="form-control" placeholder="Pengesahan Password">

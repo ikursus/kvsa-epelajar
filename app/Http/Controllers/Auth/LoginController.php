@@ -33,4 +33,18 @@ class LoginController extends Controller
         ])->onlyInput('email');
     }
 
+    /**
+     * Log the user out of the application.
+     */
+    public function logout(Request $request)
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect()->route('login')->with('mesej-berjaya', 'Anda telah log keluar');
+    }
+
 }
