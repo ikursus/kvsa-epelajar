@@ -49,7 +49,7 @@ class PelajarController extends Controller
 
         // Bagi response data berjaya disimpan
         // Redirect client ke halaman senarai pelajar
-        return redirect('pelajar')->with('mesej-berjaya', 'Rekod berjaya disimpan');
+        return redirect()->route('pelajar.index')->with('mesej-berjaya', 'Rekod berjaya disimpan');
     }
 
     /**
@@ -92,7 +92,7 @@ class PelajarController extends Controller
 
         // Bagi response data berjaya disimpan
         // Redirect client ke halaman senarai pelajar
-        return redirect('pelajar')->with('mesej-berjaya', 'Rekod berjaya dikemaskini');
+        return redirect()->route('pelajar.index')->with('mesej-berjaya', 'Rekod berjaya dikemaskini');
     }
 
     /**
@@ -105,6 +105,6 @@ class PelajarController extends Controller
 
         // Bagi response data berjaya dipadam
         // Redirect client ke halaman senarai pelajar
-        return redirect('pelajar')->with('mesej-berjaya', 'Rekod berjaya dipadam');
+        return to_route('pelajar.index')->with('mesej-berjaya', 'Rekod berjaya dipadam');
     }
 }

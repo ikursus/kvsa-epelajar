@@ -17,8 +17,8 @@
             </a>
             <div class="collapse" id="collapsePelajar" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                 <nav class="sb-sidenav-menu-nested nav">
-                    <a class="nav-link" href="/pelajar">Senarai Pelajar</a>
-                    <a class="nav-link" href="/pelajar/daftar">Daftar Pelajar</a>
+                    <a class="nav-link" href="{{ route('pelajar.index') }}">Senarai Pelajar</a>
+                    <a class="nav-link" href="{{ route('pelajar.create') }}">Daftar Pelajar</a>
                 </nav>
             </div>
 

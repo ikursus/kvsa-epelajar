@@ -21,25 +21,25 @@ Route::post('/login', [LoginController::class, 'semakanDataLogin']);
 // Module Pengurusan Pelajar
 
 // Halaman untuk memaparkan senarai pelajar
-Route::get('/pelajar', [PelajarController::class, 'index']);
+Route::get('/pelajar', [PelajarController::class, 'index'])->name('pelajar.index');
 
 // Halaman untuk memaparkan borang pendaftaran pelajar baru
-Route::get('/pelajar/daftar', [PelajarController::class, 'create']);
+Route::get('/pelajar/daftar', [PelajarController::class, 'create'])->name('pelajar.create');
 
 // Route untuk terima data dan proses pendaftaran pelajar baru
-Route::post('/pelajar/daftar', [PelajarController::class, 'store']);
+Route::post('/pelajar/daftar', [PelajarController::class, 'store'])->name('pelajar.store');
 
 // Route untuk memaparkan butiran pelajar berdasarkan ID
-Route::get('/pelajar/{id}', [PelajarController::class, 'show']);
+Route::get('/pelajar/{id}', [PelajarController::class, 'show'])->name('pelajar.show');
 
 // Route untuk memaparkan borang kemaskini butiran pelajar berdasarkan ID
-Route::get('/pelajar/{id}/edit', [PelajarController::class, 'edit']);
+Route::get('/pelajar/{id}/edit', [PelajarController::class, 'edit'])->name('pelajar.edit');
 
 // Route untuk memaparkan borang kemaskini butiran pelajar berdasarkan ID
-Route::patch('/pelajar/{id}/edit', [PelajarController::class, 'update']);
+Route::patch('/pelajar/{id}/edit', [PelajarController::class, 'update'])->name('pelajar.update');
 
 // Route untuk menghapus/padam rekod pelajar berdasarkan ID
-Route::delete('/pelajar/{id}', [PelajarController::class, 'destroy']);
+Route::delete('/pelajar/{id}', [PelajarController::class, 'destroy'])->name('pelajar.destroy');
 
 // Route resource untuk pelajar
 // Route::resource('pelajar', PelajarController::class);
