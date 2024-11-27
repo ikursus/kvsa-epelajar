@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -16,18 +17,20 @@ class LoginController extends Controller
     // Method ini akan memproses data daripada borang login
     public function semakanDataLogin(Request $request)
     {
-        // Dapatkan SEMUA data daripada borang
-        // $data = $request->all();
-        // $data = $request->only('email', 'password');
-        // $data = $request->except('email');
-        // $email = $request->input('email'); // $request->email;
-        $data = $request->validate([
-            'email' => 'required|email', // Cara 1 tulis validation rules kaedah string
-            'password' => ['required', 'string', 'min:3'] // Cara 2 tulis validation rules kaedah array
+        $credentials = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
         ]);
 
-        // Paparkan data
-        return $data;
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+
+            return redirect()->intended('dashboard');
+        }
+
+        return back()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
+        ])->onlyInput('email');
     }
 
 }
