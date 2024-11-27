@@ -21,7 +21,7 @@ Route::post('/login', [LoginController::class, 'semakanDataLogin']);
 // Module Pengurusan Pelajar
 
 // Halaman untuk memaparkan senarai pelajar
-Route::get('/pelajar/senarai', [PelajarController::class, 'index']);
+Route::get('/pelajar', [PelajarController::class, 'index']);
 
 // Halaman untuk memaparkan borang pendaftaran pelajar baru
 Route::get('/pelajar/daftar', [PelajarController::class, 'create']);
